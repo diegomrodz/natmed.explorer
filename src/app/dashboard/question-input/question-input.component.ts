@@ -1,7 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { QuestionApiService } from './question-api.service';
 
 import { Response } from '@angular/http';
+
+import { DashboardService } from './../dashboard.service';
 
 @Component({
   selector: 'app-question-input',
@@ -10,6 +12,8 @@ import { Response } from '@angular/http';
 })
 export class QuestionInputComponent implements OnInit {
   @ViewChild('query') protected query;
+  @Input() dashboard:DashboardService;
+
   private isSearching:boolean;
 
   doSearch() {
@@ -21,7 +25,7 @@ export class QuestionInputComponent implements OnInit {
     .subscribe(
       (res:Response) => { 
         console.log("Successfull Search")
-        console.log(res.json())
+        this.dashboard.setResponse(res.json())
       },
       (err) => { 
         console.log("Search with error!")
@@ -30,6 +34,7 @@ export class QuestionInputComponent implements OnInit {
       },
       () => {
         this.isSearching = false
+        this.query.nativeElement.value = ""
         console.log("Search completed")
       }
     )
