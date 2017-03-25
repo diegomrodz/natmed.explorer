@@ -1,5 +1,50 @@
 <div class="row">
     <div class="col-sm-12 col-md-offset-2 col-md-8">
-        <app-question-input></app-question-input>
+        <app-question-input
+            [dashboard]="ds"
+        ></app-question-input>
     </div>
+</div>
+
+<div *ngIf="ds.hasData" class="row answer">
+
+    <fieldset class="col-sm-12 col-md-offset-2 col-md-8">
+        <legend>Question Interpretation</legend>
+
+        <p><b>Question:</b> {{ ds.question.question }}</p>
+        <p><b>ID Type:</b> {{ ds.question.type }}</p>
+
+        <table class="table">
+            <caption>Entities Table</caption>
+            <tbody *ngFor="let entity of ds.question.entities">
+                <tr class="extracted">
+                    <td colspan="3">
+                        <strong>Extracted:</strong> {{ entity.extracted }} <br>
+                        <strong>Interpreted:</strong> {{ entity.scored[0].entity }} ({{ entity.scored[0].class }}) <br>
+                        <a href="javascript:void(0)" (click)="showDetails(entity)">(Show Details)</a>
+                    </td>
+                </tr>
+                <tr [ngClass]="{'hidden': !entity.showDetails}">
+                    <th width="45%">Entity</th>
+                    <th width="45%">Type</th>
+                    <th>Score</th>
+                </tr>
+                <tr [ngClass]="{'hidden': !entity.showDetails}" *ngFor="let score of entity.scored">
+                    <td>{{ score.entity }}</td>
+                    <td>{{ score.class }}</td>
+                    <td>{{ score.confidence }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </fieldset>
+
+    <fieldset class="col-sm-12 col-md-offset-2 col-md-8">
+        <legend>Answer</legend>
+
+        <div *ngIf="ds.question.type == 'WHAT_IS'" class="row">
+           
+        </div>
+
+    </fieldset>
+
 </div>
