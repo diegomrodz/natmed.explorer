@@ -9,12 +9,14 @@ import { QuestionInputComponent } from './dashboard/question-input/question-inpu
 
 import { QuestionApiService } from './dashboard/question-input/question-api.service'
 import { DashboardService } from './dashboard/dashboard.service';
+import { WhatIsComponent } from './dashboard/what-is/what-is.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    QuestionInputComponent
+    QuestionInputComponent,
+    WhatIsComponent
   ],
   imports: [
     BrowserModule,
