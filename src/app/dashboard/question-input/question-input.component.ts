@@ -11,7 +11,7 @@ export class QuestionInputComponent implements OnInit {
   
   doSearch() {
     let query = this.query.nativeElement.value
-    
+    this.api.send(query)
   }
 
   handleKeydownEvent (event: any) {
