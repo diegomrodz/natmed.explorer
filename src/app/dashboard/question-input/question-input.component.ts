@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { QuestionApiService } from './question-api.service';
 
 @Component({
   selector: 'app-question-input',
@@ -10,7 +11,7 @@ export class QuestionInputComponent implements OnInit {
   
   doSearch() {
     let query = this.query.nativeElement.value
-    console.log(`Searching ${query}`)
+    
   }
 
   handleKeydownEvent (event: any) {
@@ -26,8 +27,9 @@ export class QuestionInputComponent implements OnInit {
     }
   }
 
-  constructor() {
-  }
+  constructor(
+    private api: QuestionApiService
+  ) {}
 
   ngOnInit() {
     this.query.nativeElement.focus()
