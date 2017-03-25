@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { QuestionInputComponent } from './dashboard/question-input/question-input.component';
 
+import { QuestionApiService } from './dashboard/question-input/question-api.service'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,9 @@ import { QuestionInputComponent } from './dashboard/question-input/question-inpu
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+    QuestionApiService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
