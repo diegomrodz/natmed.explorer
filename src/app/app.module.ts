@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { QuestionInputComponent } from './dashboard/question-input/question-input.component';
 
 import { QuestionApiService } from './dashboard/question-input/question-api.service'
+import { DashboardService } from './dashboard/dashboard.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { QuestionApiService } from './dashboard/question-input/question-api.serv
     HttpModule
   ],
   providers: [
-    QuestionApiService
+    QuestionApiService,
+    DashboardService
   ],
   bootstrap: [AppComponent]
 })
