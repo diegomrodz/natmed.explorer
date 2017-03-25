@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class QuestionApiService {
@@ -6,7 +8,18 @@ export class QuestionApiService {
 
   public send(query:string) {
     console.log(`Searching: ${query}...`)
+    
+    let question = {
+      'type': 'QUESTION',
+      'data': {
+        'question': query
+      }
+    }
+
+    return this.http.post(this.apiPath, question)
   }
 
-  constructor() { }
+  constructor(
+    private http:Http
+  ) { }
 }
