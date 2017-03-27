@@ -1,3 +1,61 @@
-<p>
-  what-is works!
-</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th width="20%">Entity</th>
+      <td>{{ answer.entity }}</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngIf="answer.class">
+      <th>Class</th>
+      <td>{{ answer.class }}</td>
+    </tr>
+    <tr *ngIf="answer.medicine">
+      <th *ngIf="answer.class == 'Synonymous'">Synonymous of</th>
+      <th *ngIf="answer.class == 'ScientificName'">Scientific Name of</th>
+      <td>
+        <a href="javascript:void(0);" (click)="parent.search('What is ' + answer.medicine + '?')">
+          {{ answer.medicine }}
+        </a>
+      </td>
+    </tr>
+    <tr *ngIf="answer.family_name">
+      <th>Family Name</th>
+      <td>{{ answer.family_name }}</td>
+    </tr>
+    <tr *ngIf="answer.description">
+      <th>Description</th>
+      <td>{{ answer.description }}</td>
+    </tr>
+    <tr *ngIf="answer.history">
+      <th>History</th>
+      <td>{{ answer.history }}</td>
+    </tr>
+    <tr *ngIf="answer.used_for">
+      <th>Used For</th>
+      <td>{{ answer.used_for }}</td>
+    </tr>
+    <tr *ngIf="answer.scientific_names">
+      <th>Scientific Names</th>
+      <td>
+        <span *ngFor="let name of answer.scientific_names; let last = last;">
+          <a href="javascript:void(0);" (click)="parent.search('What is ' + name + '?')">
+            {{ name }}
+          </a>
+          <span *ngIf="!last">,</span>
+        </span>
+      </td>
+    </tr>
+    <tr *ngIf="answer.synonymous">
+      <th>Synonymous</th>
+      <td>
+        <span *ngFor="let name of answer.synonymous; let last = last;">
+          <a href="javascript:void(0);" (click)="parent.search('What is ' + name + '?')">
+            {{ name }}
+          </a>
+          <span *ngIf="!last">,</span>
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
