@@ -1,6 +1,7 @@
 <div class="row">
     <div class="col-sm-12 col-md-offset-2 col-md-8">
         <app-question-input
+            #questionInput
             [dashboard]="ds"
         ></app-question-input>
     </div>
@@ -30,7 +31,11 @@
                     <th>Score</th>
                 </tr>
                 <tr [ngClass]="{'hidden': !entity.showDetails}" *ngFor="let score of entity.scored">
-                    <td>{{ score.entity }}</td>
+                    <td>
+                        <a href="javascript:void(0)" (click)="search('What is ' + score.entity + '?')">
+                            {{ score.entity }}
+                        </a>
+                    </td>
                     <td>{{ score.class }}</td>
                     <td>{{ score.confidence }}</td>
                 </tr>
@@ -41,10 +46,12 @@
     <fieldset class="col-sm-12 col-md-offset-2 col-md-8">
         <legend>Answer</legend>
 
-        <div *ngIf="ds.question.type == 'WHAT_IS'" class="row">
-           
-        </div>
-
+        <app-what-is
+            *ngIf="ds.question.type == 'WHAT_IS'"
+            [answer]="ds.answer"
+            [parent]="this"
+        ></app-what-is> 
+        
     </fieldset>
 
 </div>
