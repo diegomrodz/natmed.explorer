@@ -16,6 +16,10 @@ export class QuestionInputComponent implements OnInit {
 
   private isSearching:boolean;
 
+  setSearch(query:string) {
+    this.query.nativeElement.value = query
+  }
+
   doSearch() {
     let query = this.query.nativeElement.value
 
