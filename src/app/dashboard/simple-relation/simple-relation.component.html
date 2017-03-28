@@ -1,0 +1,19 @@
+
+<strong>Relations</strong>
+
+<div *ngFor="let relation of answer.relations;" class="col-sm-12">
+  <p><strong>Label:</strong> {{ relation.info_label }}</p>
+
+  <p><strong>ID:</strong> {{ relation.info.id }}</p>
+  <p><strong>Text:</strong> {{ relation.info.text }}</p>
+
+  <p><strong>References:</strong></p>
+
+  <ul>
+    <li *ngFor="let ref of relation.references;">
+      <a href="{{ ref.url }}">#{{ ref.id }}</a>
+    </li>
+  </ul>
+
+  <hr>
+</div>
