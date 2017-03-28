@@ -52,6 +52,12 @@
             [parent]="this"
         ></app-what-is> 
         
+        <app-simple-relation
+            *ngIf="ds.question.type == 'SIMPLE_RELATION'"
+            [answer]="ds.answer"
+            [parent]="this"
+        ></app-simple-relation>
+
     </fieldset>
 
 </div>

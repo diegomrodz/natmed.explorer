@@ -15,5 +15,4 @@ export class WhatIsComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }
