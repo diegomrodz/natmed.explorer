@@ -10,13 +10,15 @@ import { QuestionInputComponent } from './dashboard/question-input/question-inpu
 import { QuestionApiService } from './dashboard/question-input/question-api.service'
 import { DashboardService } from './dashboard/dashboard.service';
 import { WhatIsComponent } from './dashboard/what-is/what-is.component';
+import { SimpleRelationComponent } from './dashboard/simple-relation/simple-relation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     QuestionInputComponent,
-    WhatIsComponent
+    WhatIsComponent,
+    SimpleRelationComponent
   ],
   imports: [
     BrowserModule,
