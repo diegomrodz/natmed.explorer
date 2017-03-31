@@ -9,6 +9,10 @@
 
 <div *ngIf="ds.hasData" class="row answer">
 
+    <div id="answer-holder" class="col-sm-12 col-md-offset-2 col-md-8">
+        <h2 id="answer-text">{{ ds.answer.text }}</h2>
+    </div>
+
     <fieldset class="col-sm-12 col-md-offset-2 col-md-8">
         <legend>Question Interpretation</legend>
 
@@ -44,17 +48,17 @@
     </fieldset>
 
     <fieldset class="col-sm-12 col-md-offset-2 col-md-8">
-        <legend>Answer</legend>
+        <legend>Answer Metadata</legend>
 
         <app-what-is
             *ngIf="ds.question.type == 'WHAT_IS'"
-            [answer]="ds.answer"
+            [answer]="ds.metadata"
             [parent]="this"
         ></app-what-is> 
         
         <app-simple-relation
             *ngIf="ds.question.type == 'SIMPLE_RELATION'"
-            [answer]="ds.answer"
+            [answer]="ds.metadata"
             [parent]="this"
         ></app-simple-relation>
 
