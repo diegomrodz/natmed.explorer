@@ -1,19 +1,41 @@
 
-<strong>Relations</strong>
+<div *ngFor="let group of answer.groups;" class="col-sm-12">
+  <h4><strong>Answer:</strong> {{ group.summary }}</h4>
 
-<div *ngFor="let relation of answer.relations;" class="col-sm-12">
-  <p><strong>Label:</strong> {{ relation.info_label }}</p>
+  <br>
 
-  <p><strong>ID:</strong> {{ relation.info.id }}</p>
-  <p><strong>Text:</strong> {{ relation.info.text }}</p>
+  <strong>Information</strong>
+
+  <p><strong>Label:</strong> {{ group.content.info_label }}</p>
+
+  <p><strong>ID:</strong> {{ group.content.info.id }}</p>
+  <p><strong>Text:</strong> {{ group.content.info.text }}</p>
 
   <p><strong>References:</strong></p>
 
   <ul>
-    <li *ngFor="let ref of relation.references;">
+    <li *ngFor="let ref of group.content.references;">
       <a href="{{ ref.url }}">#{{ ref.id }}</a>
     </li>
   </ul>
+
+  <div *ngIf="group.dosage">
+    <strong>Dosage</strong>
+
+    <p><strong>Label:</strong> {{ group.dosage.info_label }}</p>
+
+    <p><strong>ID:</strong> {{ group.dosage.info.id }}</p>
+    <p><strong>Text:</strong> {{ group.dosage.info.text }}</p>
+
+    <p><strong>References:</strong></p>
+
+    <ul>
+      <li *ngFor="let ref of group.dosage.references;">
+        <a href="{{ ref.url }}">#{{ ref.id }}</a>
+      </li>
+    </ul>
+
+  </div>
 
   <hr>
 </div>
