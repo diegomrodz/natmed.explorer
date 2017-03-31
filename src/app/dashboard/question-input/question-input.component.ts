@@ -15,6 +15,7 @@ export class QuestionInputComponent implements OnInit {
   @Input() dashboard:DashboardService;
 
   private isSearching:boolean;
+  private lastSearch:string;
 
   setSearch(query:string) {
     this.query.nativeElement.value = query
@@ -38,7 +39,8 @@ export class QuestionInputComponent implements OnInit {
       },
       () => {
         this.isSearching = false
-        this.query.nativeElement.value = ""
+        this.lastSearch = query
+        this.setQuery("")
         console.log("Search completed")
       }
     )
@@ -54,7 +56,14 @@ export class QuestionInputComponent implements OnInit {
         console.log("Enter pressed!")
         this.doSearch()
         break;
+      case 38:
+        this.setQuery(this.lastSearch)
+        break;
     }
+  }
+
+  setQuery(query:string) {
+    this.query.nativeElement.value = query
   }
 
   constructor(
