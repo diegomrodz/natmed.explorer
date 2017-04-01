@@ -14,6 +14,17 @@
     </div>
 
     <fieldset class="col-sm-12 col-md-offset-2 col-md-8">
+        <legend>Follow-up Questions</legend>
+        
+        <ul>
+            <li *ngFor="let question of ds.follow_up;">
+                <a href="javascript:void(0);" (click)="search(question.question)">{{ question.question }}</a>
+            </li>
+        </ul>
+
+    </fieldset>
+
+    <fieldset class="col-sm-12 col-md-offset-2 col-md-8">
         <legend>Question Interpretation</legend>
 
         <p><b>Question:</b> {{ ds.question.question }}</p>

@@ -17,6 +17,7 @@ export class DashboardComponent implements OnInit {
   }
 
   public search(query:string) {
+    this.ds.clear()
     this.questionInput.setSearch(query)
     this.questionInput.doSearch()
   }
